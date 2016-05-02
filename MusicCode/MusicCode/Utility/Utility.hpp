@@ -8,7 +8,7 @@ namespace utility
 {
 	typedef unsigned int uint;
 
-	uint gcf(uint a, uint b)
+	inline uint gcf(uint a, uint b)
 	{
 		uint c;
 		while (b != 0)
@@ -20,12 +20,12 @@ namespace utility
 		return a;
 	}
 
-	uint lcm(const uint& a, const uint& b)
+	inline uint lcm(const uint& a, const uint& b)
 	{
 		return a * b / gcf(a, b);
 	}
 
-	int imax(const int& a, const int& b)
+	inline int imax(const int& a, const int& b)
 	{
 		if (a < b)
 		{
@@ -34,7 +34,7 @@ namespace utility
 		return a;
 	}
 
-	int imin(const int& a, const int& b)
+	inline int imin(const int& a, const int& b)
 	{
 		if (a > b)
 		{
@@ -43,7 +43,7 @@ namespace utility
 		return a;
 	}
 
-	double dmax(const double& a, const double& b)
+	inline double dmax(const double& a, const double& b)
 	{
 		if (a < b)
 		{
@@ -53,7 +53,7 @@ namespace utility
 	}
 
 
-	double dmin(const double& a, const double& b)
+	inline double dmin(const double& a, const double& b)
 	{
 		if (a > b)
 		{
@@ -63,18 +63,18 @@ namespace utility
 	}
 
 
-	bool inInterval_i(const int& a, const int& lb, const int& hb)
+	inline bool inInterval_i(const int& a, const int& lb, const int& hb)
 	{
 		return ((a >= lb) && (a <= hb));
 	}
 
-	bool inInterval_d(const double& a, const double& lb, const double& hb)
+	inline bool inInterval_d(const double& a, const double& lb, const double& hb)
 	{
 		return ((a >= lb) && (a <= hb));
 	}
 
 
-	int iclamp(const int& val, const int& lbound, const int& hbound)
+	inline int iclamp(const int& val, const int& lbound, const int& hbound)
 	{
 		if (val < lbound)
 		{
@@ -88,7 +88,7 @@ namespace utility
 	}
 
 
-	double dclamp(const double& val, const double& lbound, const double& hbound)
+	inline double dclamp(const double& val, const double& lbound, const double& hbound)
 	{
 		if (val < lbound)
 		{
@@ -101,41 +101,41 @@ namespace utility
 		return val;
 	}
 
-	bool isNearAbs(const double& a, const double& b, const double& error)
+	inline bool isNearAbs(const double& a, const double& b, const double& error)
 	{
 		return (fabs(a - b) < error);
 	}
 
-	bool isNearPercent(const double& observed, const double& theoretical, const double& error)
+	inline bool isNearPercent(const double& observed, const double& theoretical, const double& error)
 	{
 		return ((fabs(observed - theoretical) / theoretical)  < error);
 	}
 
-	int randInt()
+	inline int randInt()
 	{
 		srand(time(NULL));
 		return rand();
 	}
 
-	int randInt(const int& lo, const int& hi)
+	inline int randInt(const int& lo, const int& hi)
 	{
 		srand(time(NULL));
 		return rand() % (hi - lo + 1) + lo;
 	}
 
-	double randUnitDouble()
+	inline double randUnitDouble()
 	{
 		srand(time(NULL));
 		return rand() / ((float)(RAND_MAX));
 	}
 
-	double randDouble()
+	inline double randDouble()
 	{
 		return randInt() + randUnitDouble();
 	}
 
 
-	std::vector<std::string> spiltAtSubstring(const std::string& bigstr, const std::string& substr)
+	inline std::vector<std::string> spiltAtSubstring(const std::string& bigstr, const std::string& substr)
 	{
 		std::vector<std::string> retstrs;
 		std::string tracker = "";
@@ -180,7 +180,7 @@ namespace utility
 		return retstrs;
 	}
 
-	void removeSubstring(std::string& bigstr, const std::string& substr)
+	inline void removeSubstring(std::string& bigstr, const std::string& substr)
 	{
 		std::vector<std::string> sstrs = spiltAtSubstring(bigstr, substr);
 		bigstr = "";
