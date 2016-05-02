@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3A23153F-5DA3-40F5-9576-D7C56349F173}</ProjectGuid>
-    <RootNamespace>Project1</RootNamespace>
+    <RootNamespace>MusicCode</RootNamespace>
     <ProjectName>MotifMaker</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -68,11 +68,13 @@
     <ClCompile Include="Music\TimeStructure\Beat.cpp" />
     <ClCompile Include="Probability\Distribution.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Utility\INIParser.cpp" />
     <ClCompile Include="Utility\Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Music\TimeStructure\Beat.hpp" />
     <ClInclude Include="Probability\Distribution.hpp" />
+    <ClInclude Include="Utility\INIParser.hpp" />
     <ClInclude Include="Utility\Utility.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

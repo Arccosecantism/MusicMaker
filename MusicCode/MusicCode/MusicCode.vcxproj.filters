@@ -27,6 +27,9 @@
     <ClCompile Include="Music\TimeStructure\Beat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utility\INIParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Probability\Distribution.hpp">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Music\TimeStructure\Beat.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\INIParser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

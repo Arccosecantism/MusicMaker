@@ -135,8 +135,10 @@ namespace utility
 	}
 
 
-	std::vector<std::string> spiltStringAtSubstring(std::string bigstr, const std::string& substr)
+	std::vector<std::string> spiltAtSubstring(const std::string& bigstr, const std::string& substr)
 	{
+		std::vector<std::string> retstrs;
+		std::string tracker = "";
 		if (substr.size())
 		{
 			for (uint i = 0; i < bigstr.size(); i++)
@@ -144,21 +146,49 @@ namespace utility
 				if (bigstr[i] == substr[0])
 				{
 					bool same = true;
-					for (uint k = 1; k < substr.size(); k++)
+					uint rk;
+					for (uint k = 1; (k < substr.size()) && same; k++)
 					{
 
 						if (bigstr[imin(i + k, bigstr.size() - 1)] != substr[k])
 						{
 							same = false;
 						}
+						rk = k;
 					}
+					if (same)
+					{
+						i = imin(i + rk - 1, bigstr.size() - 1);
+						retstrs.push_back(tracker);
+						tracker = "";
+					}
+					else
+					{
+						tracker += bigstr[i];
+					}
+				}
+				else
+				{
+					tracker += bigstr[i];
 				}
 			}
 		}
 		else
 		{
-
+			retstrs.push_back(bigstr);
 		}
+		return retstrs;
+	}
+
+	void removeSubstring(std::string& bigstr, const std::string& substr)
+	{
+		std::vector<std::string> sstrs = spiltAtSubstring(bigstr, substr);
+		bigstr = "";
+		for (uint i = 0; i < sstrs.size(); i++)
+		{
+			bigstr += sstrs[i];
+		}
+
 	}
 
 	
