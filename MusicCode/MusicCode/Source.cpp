@@ -14,6 +14,7 @@ int main()
 	//std::cout << myDistr.generateObj();
 
 	INIParser tmptest;
+	tmptest.setDirectory("INI_Files");
 	tmptest.readINI("test_ini.ini");
 	tmptest.setSection("Test_Section");
 	std::cout << tmptest.getValue<std::string>("testkey1") << std::endl;

@@ -13,6 +13,11 @@ Beat::~Beat()
 {
 }
 
+void Beat::setINIParser(INIParser& inip)
+{
+	ip = &inip;
+}
+
 void Beat::setBeatSpeed(const double& bsp)
 {
 	beatSpeed = bsp;
@@ -26,20 +31,20 @@ void Beat::generateRhythm()
 
 void Beat::setupMap()
 {
-	setMapValue("Q", 1, true);
+	
+	ip->readINI("beat_pattern_elements.ini");
+	ip->setSection("Names");
 
-	setMapValue("E", .5, true);
-	setMapValue("dE", .75, true);
+	const unsigned int elementNumber = ip->getValue<int>("size");
+	const std::string prekey = ip->getValue<std::string>("keyName");
 
-	setMapValue("S", .25, true);
+	std::vector<std::string> sectionNames;
 
-
-	setMapValue("QR", 1, false);
-
-	setMapValue("ER", .5, false);
-	setMapValue("dER", .75, false);
-
-	setMapValue("SR", .25, false);
+	std::string tmpSectionName = "";
+	for (unsigned int i = 0; i < elementNumber; i++)
+	{
+			tmpSectionName = prekey + boost::xorabl
+	}
 
 }
 

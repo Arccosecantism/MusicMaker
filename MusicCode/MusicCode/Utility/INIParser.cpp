@@ -11,9 +11,11 @@ INIParser::~INIParser()
 
 void INIParser::readINI(const std::string& filename)
 {
+	const std::string tmpname = directoryName + "\\" + filename;
+
 	try
 	{
-		boost::property_tree::read_ini(filename.c_str(), propTree);
+		boost::property_tree::read_ini(tmpname.c_str(), propTree);
 	}
 	catch (boost::property_tree::ini_parser::ini_parser_error E)
 	{
@@ -28,6 +30,12 @@ void INIParser::readINI(const std::string& filename)
 			std::cout << key.first << "=" << key.second.get_value<std::string>() << "\n";
 	}*/
 }
+
+void INIParser::setDirectory(const std::string& dname)
+{
+	directoryName = dname;
+}
+
 
 void INIParser::setSection(const std::string& sname)
 {

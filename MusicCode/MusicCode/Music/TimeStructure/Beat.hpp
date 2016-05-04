@@ -3,6 +3,8 @@
 #include <vector>
 #include <map>
 #include "../../Probability/Distribution.hpp"
+#include "../../Utility/INIParser.hpp"
+
 
 class Beat
 {
@@ -10,6 +12,7 @@ public:
 	Beat();
 	~Beat();
 
+	void setINIParser(INIParser& inip);
 	void setBeatSpeed(const double& bsp);
 	void generateRhythm();
 
@@ -30,6 +33,8 @@ private:
 	Distribution<std::string> rhythmDistr;
 
 	std::map<std::string, std::pair<double, bool> > timeMap;
+
+	INIParser* ip;
 
 };
 

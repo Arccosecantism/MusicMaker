@@ -1,6 +1,7 @@
 #pragma once
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
+#include <
 #include <iostream>
 
 class INIParser
@@ -9,6 +10,7 @@ public:
 	INIParser();
 	~INIParser();
 	void readINI(const std::string& filename);
+	void setDirectory(const std::string& dname);
 	void setSection(const std::string& sname);
 
 
@@ -49,6 +51,7 @@ private:
 	std::string assemblePath(const std::string& key);
 
 	boost::property_tree::ptree propTree;
+	std::string directoryName;
 	std::string sectionName;
 
 };
