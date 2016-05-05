@@ -1,13 +1,14 @@
 #pragma once
 #include <math.h>
-#include <windows.h>
-#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h> 
 
 
 namespace utility
 {
 	typedef unsigned int uint;
-
+	
 	inline uint gcf(uint a, uint b)
 	{
 		uint c;
@@ -113,25 +114,33 @@ namespace utility
 
 	inline int randInt()
 	{
-		srand(time(NULL));
 		return rand();
 	}
 
 	inline int randInt(const int& lo, const int& hi)
 	{
-		srand(time(NULL));
-		return rand() % (hi - lo + 1) + lo;
+		if (lo > hi)
+		{
+			return randInt(hi, lo);
+		}
+		if (lo == hi)
+		{
+			return lo;
+		}
+		else
+		{
+			return randInt() % (hi - lo + 1) + lo;
+		}
 	}
 
 	inline double randUnitDouble()
 	{
-		srand(time(NULL));
-		return rand() / ((float)(RAND_MAX));
+		return ((double)(randInt())) / ((double)(RAND_MAX));
 	}
 
 	inline double randDouble()
 	{
-		return randInt() + randUnitDouble();
+		return (double)(randInt()) + randUnitDouble();
 	}
 
 

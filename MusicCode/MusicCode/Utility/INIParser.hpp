@@ -1,7 +1,7 @@
 #pragma once
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
-#include <
+#include <boost\lexical_cast.hpp>
 #include <iostream>
 
 class INIParser
