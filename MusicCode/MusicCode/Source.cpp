@@ -13,16 +13,20 @@ int main()
 	//myDistr.addRelativeChance(3, 3);
 
 	//std::cout << myDistr.generateObj();
-	srand(time(NULL));
-	std::cout << time(NULL) << std::endl;
+	utility::seedRand();
 
+	//Beep(440, 1000);
 	INIParser parser;
 	parser.setDirectory("INI_Files");
 	BeatGenerator testBeatGenerator;
+	testBeatGenerator.setBeatSpeed(.7);
+	testBeatGenerator.setSpacePercent(.1);
+	std::cout << "xxcHere1" << std::endl;
 	testBeatGenerator.setINIParser(parser);
-	std::cout << testBeatGenerator.generateRhythm() << std::endl;
-	std::cout << testBeatGenerator.generateRhythm() << std::endl;
-	std::cout << testBeatGenerator.generateRhythm() << std::endl;
+	std::cout << "xxcHere2" << std::endl;
+	Beat tBeat = testBeatGenerator.generateBeat();
+	tBeat.testBeat();
+	std::cout << "xxcHere3" << std::endl;
 
 
 

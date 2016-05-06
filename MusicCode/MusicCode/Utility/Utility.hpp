@@ -1,8 +1,10 @@
 #pragma once
 #include <math.h>
-#include <stdio.h>
+#include <time.h>
 #include <stdlib.h>
-#include <time.h> 
+#include <stdio.h>
+#include <windows.h>
+#include "INIParser.hpp"
 
 
 namespace utility
@@ -112,6 +114,16 @@ namespace utility
 		return ((fabs(observed - theoretical) / theoretical)  < error);
 	}
 
+	inline void seedRand()
+	{
+
+		SYSTEMTIME st;
+		GetSystemTime(&st);
+		int seed = st.wMilliseconds;
+		srand(seed);
+
+	}
+
 	inline int randInt()
 	{
 		return rand();
@@ -155,7 +167,8 @@ namespace utility
 				if (bigstr[i] == substr[0])
 				{
 					bool same = true;
-					uint rk;
+					uint rk = 0;
+
 					for (uint k = 1; (k < substr.size()) && same; k++)
 					{
 
@@ -167,7 +180,7 @@ namespace utility
 					}
 					if (same)
 					{
-						i = imin(i + rk - 1, bigstr.size() - 1);
+						i = imin(i + rk, bigstr.size() - 1);
 						retstrs.push_back(tracker);
 						tracker = "";
 					}
@@ -186,6 +199,10 @@ namespace utility
 		{
 			retstrs.push_back(bigstr);
 		}
+		if (tracker != "")
+		{
+			retstrs.push_back(tracker);
+		}
 		return retstrs;
 	}
 
@@ -200,6 +217,26 @@ namespace utility
 
 	}
 
+	inline std::vector<std::string> getSectionNames(const std::string& filename, INIParser& ip)
+	{
+		ip.readINI(filename);
+		ip.setSection("SectionNames");
+
+		const unsigned int elementNumber = ip.getValue<int>("size");
+		const std::string prekey = ip.getValue<std::string>("keyName");
+
+		std::vector<std::string> sectionNames;
+
+		std::string tmpSectionName = "";
+
+		for (unsigned int i = 0; i < elementNumber; i++)
+		{
+			tmpSectionName = prekey + boost::lexical_cast<std::string>(i);
+			sectionNames.push_back(ip.getValue<std::string>(tmpSectionName));
+		}
+
+		return sectionNames;
+	}
 	
 
 }
