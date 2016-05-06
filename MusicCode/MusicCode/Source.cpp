@@ -1,6 +1,6 @@
 #include "Probability\Distribution.hpp"
 #include "Utility\INIParser.hpp"
-#include "Music\TimeStructure\BeatGenerator.hpp"
+#include "Music\Measure.hpp"
 
 
 
@@ -19,14 +19,15 @@ int main()
 	INIParser parser;
 	parser.setDirectory("INI_Files");
 	BeatGenerator testBeatGenerator;
-	testBeatGenerator.setBeatSpeed(.7);
-	testBeatGenerator.setSpacePercent(.1);
-	std::cout << "xxcHere1" << std::endl;
 	testBeatGenerator.setINIParser(parser);
-	std::cout << "xxcHere2" << std::endl;
-	Beat tBeat = testBeatGenerator.generateBeat();
-	tBeat.testBeat();
-	std::cout << "xxcHere3" << std::endl;
+
+	for (int i = 0; i < 10; i++)
+	{
+		Measure testMeasure;
+		testMeasure.setTimeSignature(4);
+		testMeasure.createMeasure(testBeatGenerator);
+		testMeasure.testMeasure(1, .1);
+	}
 
 
 

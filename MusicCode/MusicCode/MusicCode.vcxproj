@@ -67,6 +67,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Music\Measure.cpp" />
     <ClCompile Include="Music\TimeStructure\Beat.cpp" />
     <ClCompile Include="Music\TimeStructure\BeatGenerator.cpp" />
     <ClCompile Include="Probability\Distribution.cpp" />
@@ -75,6 +76,7 @@
     <ClCompile Include="Utility\Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Music\Measure.hpp" />
     <ClInclude Include="Music\TimeStructure\Beat.hpp" />
     <ClInclude Include="Music\TimeStructure\BeatGenerator.hpp" />
     <ClInclude Include="Probability\Distribution.hpp" />

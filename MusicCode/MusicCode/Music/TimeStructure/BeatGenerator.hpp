@@ -13,8 +13,6 @@ public:
 	~BeatGenerator();
 
 	void setINIParser(INIParser& inip);
-	void setSpacePercent(const double& sperc);
-	void setBeatSpeed(const double& bsp);
 	Beat generateBeat();
 
 
@@ -26,15 +24,10 @@ private:
 
 	std::vector<std::string> getSectionNames(const std::string& filename);
 
-
-	double beatSpeed;
-	double spacePercent;
-
 	std::string rhythmPattern;
 
 	Distribution<std::string> rhythmDistr;
 
-	
 
 	INIParser* ip;
 

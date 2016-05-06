@@ -18,7 +18,9 @@ public:
 
 	void createBeat(std::string beatStr);
 
-	void testBeat();
+	void testBeat(const double& tempo, const double& spacePercent);
+
+	std::vector<std::pair<double, bool>> getDurations();
 
 private:
 
@@ -26,8 +28,7 @@ private:
 	
 	std::map<std::string, std::pair<double, bool>> timeMap;
 	
-	double qDuration;
-	double spacePercent;
+
 	std::vector<std::pair<double, bool>> durations;
 	
 };

@@ -13,15 +13,6 @@ Beat::~Beat()
 {
 }
 
-void Beat::setBeatDuration(const double& qdur)
-{
-	qDuration = qdur;
-}
-
-void Beat::setSpacePercent(const double& sp)
-{
-	spacePercent = sp;
-}
 
 void Beat::setupMap(INIParser& ip)
 {
@@ -46,13 +37,13 @@ void Beat::createBeat(std::string beatStr)
 	}
 }
 
-void Beat::testBeat()
+void Beat::testBeat(const double& tempo, const double& spacePercent)
 {
 	for (unsigned int i = 0; i < durations.size(); i++)
 	{
 		if (durations[i].second)
 		{
-			double tmpdur[2] = { 1000 * durations[i].first * (1 - spacePercent), 1000 * durations[i].first * spacePercent };
+			double tmpdur[2] = { 1000 * tempo * durations[i].first * (1 - spacePercent), 1000 * tempo * durations[i].first * spacePercent };
 			Beep(440, tmpdur[0]);
 			Sleep(tmpdur[1]);
 		}
@@ -61,6 +52,12 @@ void Beat::testBeat()
 			Sleep(1000 * durations[i].first);
 		}
 	}
+}
+
+
+std::vector<std::pair<double, bool>> Beat::getDurations()
+{
+	return durations;
 }
 
 

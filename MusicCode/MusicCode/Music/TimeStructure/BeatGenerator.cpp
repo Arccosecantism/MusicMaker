@@ -17,23 +17,12 @@ void BeatGenerator::setINIParser(INIParser& inip)
 	setupDistr();
 }
 
-void BeatGenerator::setSpacePercent(const double& sperc)
-{
-	spacePercent = sperc;
-}
-
-void BeatGenerator::setBeatSpeed(const double& bsp)
-{
-	beatSpeed = bsp;
-}
 
 Beat BeatGenerator::generateBeat()
 {
 	std::string randstr = rhythmDistr.generateObj();
 	Beat newBeat;
 	newBeat.setupMap(*ip);
-	newBeat.setBeatDuration(beatSpeed);
-	newBeat.setSpacePercent(spacePercent);
 	newBeat.createBeat(randstr);
 	return newBeat;
 }
